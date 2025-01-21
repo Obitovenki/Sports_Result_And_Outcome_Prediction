@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #7D6D8D; /* Darker lavender background */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        nav {
+            width: 100%;
+            background-color: #5B4D6D; /* Darker tone for the nav bar */
+            padding: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            padding: 10px;
+        }
+        nav a:hover {
+            background-color: #4D405E; /* Lighter shade for hover effect */
+            border-radius: 5px;
+        }
+        .tabs-container {
+            display: flex;
+            justify-content: space-between;
+            width: 40%; /* Adjust width for spacing between buttons */
+        }
+        .tab {
+            width: 45%; /* Adjust to fit two buttons side by side */
+            padding: 20px;
+            text-align: center;
+            background-color: #D8BFD8; /* Light Lavender color for button */
+            color: black;
+            text-decoration: none;
+            border: 2px solid #C9A2C9; /* Soft border color */
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 0 10px; /* Added margin for gap between buttons */
+        }
+        .tab:hover {
+            background-color: #B896C1; /* Darker lavender on hover */
+            border-color: #A978B1; /* Darker border on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="./">Home</a>
+        <a href="./predict">Predict</a>
+    </nav>
+
+    <!-- Tabs in the center of the page -->
+    <div class="tabs-container">
+        <a href="./Football_Analysis" class="tab left-tab">Football Prediction</a>
+        <a href="./Analysis" class="tab right-tab">Cricket Prediction</a>
+    </div>
+
+</body>
+</html>

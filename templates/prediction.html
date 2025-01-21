@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Prediction</title>
+    <link rel="icon" href="https://w7.pngwing.com/pngs/303/549/png-transparent-sport-logo-football-sports-logos-text-sport-logo.png" type="image/x-icon">
+    <link rel="icon" href="https://repository-images.githubusercontent.com/499116129/ebf45738-0201-41d2-a851-84b0b8616d5a" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #8D6EC7;
+            background: -moz-radial-gradient(circle, #8D6EC7 100%);
+            background: -webkit-radial-gradient(circle, #8D6EC7 100%);
+            background: radial-gradient(circle, #8D6EC7 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9CA5D9", endColorstr="#9CC4D9", GradientType=1);
+        }
+
+        .custom-card {
+    background-color: rgba(177, 156, 217);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+
+.team {
+    padding: 15px;
+    border: 2px solid #E5E7EB;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    height: 30px;
+    border-radius: 15px;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 15px;
+}
+
+
+        .container_res {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(4, 0, 12, 0.76);
+            backdrop-filter: blur(5px);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-20">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"><u><b>IPL Outcome Prediction</b></u></h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base"><strong>Fill the form for prediction</strong></p>
+            </div>
+            <div class="btn-align">
+                <a class="btn btn-primary" href="./" role="button">Home</a>
+                <a class="btn btn-primary" href="./choosesite" role="button">Analysis</a>
+            </div>
+            <div class="container_res custom-card">
+                <h1 class="text-xl font-bold mb-4">Match Winning Prediction</h1>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="team">
+                        <h2 class="text-lg font-semibold mb-2">{{ team1 }}</h2>
+                        <div class="progress-bar bg-gray-300 rounded-lg overflow-hidden">
+                            <div class="progress bg-green-500 text-white font-semibold text-center py-1" style="width: {{ probability1 }}%;">{{ probability1 }}%</div>
+                        </div>
+                    </div>
+                    <div class="team">
+                        <h2 class="text-lg font-semibold mb-2">{{ team2 }}</h2>
+                        <div class="progress-bar bg-gray-300 rounded-lg overflow-hidden">
+                            <div class="progress bg-green-500 text-white font-semibold text-center py-1" style="width: {{ probability2 }}%;">{{ probability2 }}%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <br><br>
+            <div class="card custom-card p-5">
+                <div class="card-body">
+                    <form action="/predict" method="post">
+                        <div class="mb-3">
+                            <label for="batting_team" class="form-label">Batting Team:</label>
+                            <select name="batting_team" class="form-select" required>
+                                <option value="">Select Batting Team</option>
+                                <option value="Punjab Kings">Punjab Kings</option>
+                                <option value="Delhi Capitals">Delhi Capitals</option>
+                                <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                                <option value="Chennai Super Kings">Chennai Super Kings</option>
+                                <option value="Mumbai Indians">Mumbai Indians</option>
+                                <option value="Rajasthan Royals">Rajasthan Royals</option>
+                                <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                                <option value="Gujarat Titans">Gujarat Titans</option>
+                                <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bowling_team" class="form-label">Bowling Team:</label>
+                            <select name="bowling_team" class="form-select" required>
+                                <option value="">Select Bowling Team</option>
+                                <option value="Punjab Kings">Punjab Kings</option>
+                                <option value="Delhi Capitals">Delhi Capitals</option>
+                                <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                                <option value="Chennai Super Kings">Chennai Super Kings</option>
+                                <option value="Mumbai Indians">Mumbai Indians</option>
+                                <option value="Rajasthan Royals">Rajasthan Royals</option>
+                                <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                                <option value="Gujarat Titans">Gujarat Titans</option>
+                                <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                                <option value="Lucknow Super Giants">Lucknow Super Giants</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City:</label>
+                            <select name="city" class="form-select" required>
+                                <option value="">Select City</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Bangalore">Bangalore</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Abu Dhabi">Abu Dhabi</option>
+                                <option value="Kanpur">Kanpur</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Cape Town">Cape Town</option>
+                                <option value="Bengaluru">Bengaluru</option>
+                                <option value="Jaipur">Jaipur</option>
+                                <option value="Ahmedabad">Ahmedabad</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Johannesburg">Johannesburg</option>
+                                <option value="Durban">Durban</option>
+                                <option value="Pune">Pune</option>
+                                <option value="Sharjah">Sharjah</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Navi Mumbai">Navi Mumbai</option>
+                                <option value="Port Elizabeth">Port Elizabeth</option>
+                                <option value="Dubai">Dubai</option>
+                                <option value="Centurion">Centurion</option>
+                                <option value="Dharamsala">Dharamsala</option>
+                                <option value="Nagpur">Nagpur</option>
+                                <option value="East London">East London</option>
+                                <option value="Visakhapatnam">Visakhapatnam</option>
+                                <option value="Rajkot">Rajkot</option>
+                                <option value="Cuttack">Cuttack</option>
+                                <option value="Ranchi">Ranchi</option>
+                                <option value="Kimberley">Kimberley</option>
+                                <option value="Raipur">Raipur</option>
+                                <option value="Indore">Indore</option>
+                                <option value="Bloemfontein">Bloemfontein</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="runs_left" class="form-label">Runs Left:</label>
+                            <input type="number" name="runs_left" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="balls_left" class="form-label">Balls Left:</label>
+                            <input type="number" name="balls_left" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="wickets_left" class="form-label">Wickets Left:</label>
+                            <input type="number" name="wickets_left" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="target" class="form-label">Target</label>
+                            <input type="number" step="0.01" name="target" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary btn-animated">Predict</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
